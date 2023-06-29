@@ -1,16 +1,21 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
+import {DashboardContainer} from './components/dashboard/DashboardContainer';
 import {Sidebar} from './components/sidebar/Sidebar';
-import {Main} from './components/main/Main';
+import {Dashboard} from './components/dashboard/Dashboard';
+import {Login} from './components/auth/login/Login';
+import {AuthContext, AuthProvider} from './components/auth/login/AuthProvider';
 import './App.scss';
 
 
 function App() {
+    const [isLoggedIn, setLoggedIn] = useState(false);
+    const {userEmail} = useContext(AuthContext)
+
   return (
     <div className="App">
-        <div className="main-container">
-            <Sidebar />
-           <Main />
-        </div>
+        <AuthProvider >
+            <DashboardContainer />
+        </AuthProvider>
     </div>
   );
 }

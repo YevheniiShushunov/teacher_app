@@ -5,7 +5,7 @@ export function Sidebar() {
         <div className="sidebar">
             <nav className="sidebar__nav">
                 <div className="item">
-                    <NavLink to={"/"}>Home</NavLink>
+                    <NavLink to={"/"}>Головна</NavLink>
                 </div>
                 <div className="item">
                     <NavLink to={"/lessons"}>Уроки</NavLink>

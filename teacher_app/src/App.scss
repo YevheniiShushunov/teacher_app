@@ -1,9 +1,10 @@
-@import "components/main/header/header.module";
+@import "components/dashboard/header/header.module";
 @import "src/components/sidebar/sidebar.module";
-@import "components/main/main.module";
-@import "components/main/dashboard/dashboard.module";
-@import "components/main/dashboard/lessons/lessons.module";
-@import "components/main/dashboard/lesson/lesson.module";
+@import "components/dashboard/dashboard.module";
+@import "components/dashboard/main/main.module";
+@import "components/dashboard/lessons/lessons.module";
+@import "components/dashboard/lesson/lesson.module";
+@import "components/auth/login/login.module";
 
 .app {
   width: 100%;
