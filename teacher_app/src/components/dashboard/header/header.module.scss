@@ -1,27 +1,40 @@
-.header {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  height: 60px;
+.header-wrapper {
   width: 100%;
-  background: #f5eaf5;
-  color: #FFF;
-  font-family: Roboto, sans-serif;
-  border-bottom: 1px solid rgba(0,0,0,0.12);
 
-  .login {
-    color: #5c2296;
-    padding: 5px 10px;
-    font-size: 18px;
-    text-decoration: none;
-    margin-right: 25px;
-    border: 1px solid #5c2296;
-    border-radius: 25px;
-  }
+  .header {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    background: #0d0d4d;
+    color: #FFF;
+    font-family: Roboto, sans-serif;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
-  .user {
-    font-size: 18px;
-    color: #5c2296;
-    margin-right: 25px;
+    .login {
+      color: #FFFFFF;
+      padding: 5px 10px;
+      font-size: 18px;
+      text-decoration: none;
+      margin-right: 25px;
+      border: 1px solid #FFFFFF;
+      border-radius: 25px;
+    }
+
+    .user {
+      font-size: 18px;
+      color: #FFFFFF;
+      margin-right: 25px;
+      padding: 10px 15px;
+      border: 1px solid gainsboro;
+      border-radius: 5px;
+      overflow: hidden;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }
+

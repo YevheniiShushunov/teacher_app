@@ -1,11 +1,10 @@
 const {getUser} = require("../services/user.services");
 
 const authorization = async (req, res) => {
-    const {email, password} = req.body;
+    const {email, password} = req?.body;
 
     try {
         const user = await getUser(email, password)
-        console.log('auth:', user)
         res.status(200).send(`${user}`)
 
     } catch (e) {
@@ -15,7 +14,7 @@ const authorization = async (req, res) => {
 }
 
 const authentication = async (req, res) => {
-    const user = {user:req.email, userid:req.userId};
+    const user = {email:req?.email, userid:req?.userId};
     res.status(200).json(user);
 
 };

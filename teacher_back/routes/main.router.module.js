@@ -1,5 +1,5 @@
 const router = require('express').Router();
 
-router.get('/main');
+router.get('/lessons');
 
 module.exports = router;

@@ -1,10 +1,13 @@
 @import "components/dashboard/header/header.module";
-@import "src/components/sidebar/sidebar.module";
+@import "components/top-menu/top-menu";
 @import "components/dashboard/dashboard.module";
 @import "components/dashboard/main/main.module";
 @import "components/dashboard/lessons/lessons.module";
 @import "components/dashboard/lesson/lesson.module";
 @import "components/auth/login/login.module";
+@import "components/dashboard/header/user-dropdown/user-dropdown-menu.module";
+@import "components/dashboard/agreement/agreement.module";
+@import "components/dashboard/home/home.module";
 
 .app {
   width: 100%;
@@ -13,6 +16,7 @@
 
 .main-container {
   display: flex;
+  flex-direction: column;
 }
 
 

@@ -1,11 +1,12 @@
-import {NavLink} from 'react-router-dom';
+import React from 'react';
+import {NavLink, Route, Routes} from 'react-router-dom';
 
-export function Sidebar() {
+export const TopMenu = () => {
     return (
-        <div className="sidebar">
-            <nav className="sidebar__nav">
+        <div className="top-menu">
+            <nav className="top-menu__nav">
                 <div className="item">
-                    <NavLink to={"/"}>Головна</NavLink>
+                    <NavLink to={"/home"}>Головна</NavLink>
                 </div>
                 <div className="item">
                     <NavLink to={"/lessons"}>Уроки</NavLink>

@@ -1,0 +1,17 @@
+@import "../../../../variables";
+
+.dropdown {
+  position: absolute;
+  background: #FFFFFF;
+  top: 4rem;
+  right: 1rem;
+  border-radius: 5px;
+  width: 230px;
+  box-shadow: 1px 2px 7px 0 grey;
+  z-index: 10;
+
+  .user-menu {
+    list-style-type: none;
+    cursor: pointer;
+  }
+}

@@ -1,27 +1,26 @@
 const jwt = require("jsonwebtoken");
-const {getUser} = require('../services/user.services')
+const {getUserByEmail} = require('../services/user.services')
 
 function tokenCheck(req, res, next) {
-    const header = req.headers(['Authorization']);
-    const token = header && header.split(' ')[1];
-
+    const token = req.get('authorization');
     if (token === null) {
         return req.status(401);
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, async (err, user) => {
-        if (err) {
-            return req.status(401);
+    jwt.verify(token, process.env.JWT_SECRET,  async function (err, user)  {
+        if (err || !user?.email) {
+            return res.status(401).send(err);
         }
 
         try {
-            await getUser(user.email);
-            req.user = user.email;
-            req.userId = user.id;
+            await getUserByEmail(user.email);
+            // console.log('user:', user)
+            req.email = user.email;
+            req.userId = user.userId;
             next();
 
         } catch (e) {
-            return req.status(401);
+            return res.status(401);
         }
     })
 }

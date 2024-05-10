@@ -1,0 +1,10 @@
+.policy-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  .policy {
+    width: 700px;
+    white-space: pre-line;
+  }
+}

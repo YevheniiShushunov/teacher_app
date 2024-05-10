@@ -1,19 +1,14 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Button, TextField, Input} from '@mui/material';
+import {useUserManager} from '../../state/store/user-store/user.hook';
 import {ErrorMessage} from '../../validator-message/Error-message';
-import {setToken} from '../../share/TokenServices';
-import {AuthContext} from './AuthProvider';
+import {setToken} from '../../share/Token.service';
 import {authService} from '../auth.services';
-
-interface IAutResponse {
-    email: string;
-    id: number;
-}
 
 export function Login() {
     const [email, setEmail] = useState<string>('');
-    const {setUser, userEmail} = useContext(AuthContext)
+    const [, {setUser}] = useUserManager();
     const [emailError, setEmailError] = useState(false);
     const [passwordType, setPasswordType] = useState('password');
     const [password, setPassword] = useState<string>('');
@@ -46,14 +41,13 @@ export function Login() {
 
         try {
             setPasswordInvalid(false);
-            const response = await authService.doLogin(email, password);
-            if(setUser && response.data) {
-                setUser(response.data.email)
-                console.log(response.data.token);
-                setToken(response.data.token);
+            const response = await authService.login(email, password);
+            if(response) {
+                setUser(response.email, response.userId)
+                setToken(response.token);
                 navigate('/')
             }
-            console.log(response.data);
+            console.log(response);
 
         } catch (e) {
             console.error(e)

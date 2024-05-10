@@ -1,5 +1,6 @@
 import axios, {AxiosResponse} from 'axios';
-import {getToken} from '../share/TokenServices';
+import {UserResponse} from '../share/interfaces/user.type';
+import {getToken} from '../share/Token.service';
 
 const baseURL = "http://localhost:4200";
 const authApi = axios.create({
@@ -7,21 +8,20 @@ const authApi = axios.create({
     baseURL,
 })
 
-export const authService =  {
-    doLogin: (email: string, password: string) => {
-        return authApi.post('/auth', {email, password});
+export const authService = {
+    login: async (email: string, password: string) => {
+        const response = await authApi.post('/auth', {email, password});
+        return response.data
     },
 
-    getUserProfile: () => {
+    getUserProfile: async (): Promise<UserResponse> => {
         const token = getToken();
-        return authApi.get('/auth', {
+        const response = await authApi.get<UserResponse>('/auth', {
             headers: {
-                'Authorization': token
+                'authorization': token
             }
         })
-    },
 
-    getAllUsers: () => {
-        return authApi.get('all');
-    }
+        return response.data
+    },
 }

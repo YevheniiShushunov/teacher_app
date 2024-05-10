@@ -1,5 +1,9 @@
 export function Home() {
     return (
-        <div>Home</div>
+        <div className={"home"}>
+            <div>
+                <h1>Вчитель: Шушунова Тетяна Андріївна</h1>
+            </div>
+        </div>
     )
 }

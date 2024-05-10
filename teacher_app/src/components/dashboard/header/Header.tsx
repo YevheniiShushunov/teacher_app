@@ -1,35 +1,54 @@
-import {NavLink, useNavigate} from 'react-router-dom';
-import {useContext} from 'react';
-import {AuthContext} from '../../auth/login/AuthProvider';
+import {NavLink} from 'react-router-dom';
+import {useEffect, useRef, useState} from 'react';
 import {authService} from '../../auth/auth.services';
-import {removeToken} from '../../share/TokenServices';
+import {getToken} from '../../share/Token.service';
+import {useUserManager} from '../../state/store/user-store/user.hook';
+import {TopMenu} from '../../top-menu/TopMenu';
+import {UserDropdownMenu} from './user-dropdown/UserDropdownMenu';
 
 export function Header() {
-    const {userEmail, setUser} = useContext(AuthContext)
+    const [userState, {setUser}] = useUserManager();
+    const [isOpen, setIsOpen] = useState(false)
+    const token = getToken();
+    let dropdownRef = useRef<HTMLDivElement>(null);
 
-    async function getUser() {
+    const authenticateUser = async () => {
         try {
             const response = await authService.getUserProfile();
-            if(setUser && response.data) {
-                setUser(response.data.email);
+
+            if (response) {
+                setUser(response.email, response.userId);
             }
 
         } catch (e) {
             console.error(e)
         }
-
     }
 
-    function logOut(){
-        removeToken()
-        setUser('')
-    }
+    useEffect(() => {
+        if (token) {
+            authenticateUser();
+        }
+    }, [userState.email])
 
+    useEffect(() => {
+        let menuHandler = (e: MouseEvent) => {
+            if(dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+                setIsOpen(false)
+            }
+        }
+
+        document.addEventListener("mousedown", menuHandler);
+    }, [])
 
     return (
-        <div className="header">
-            {!userEmail && <NavLink className={'login'} to={"/auth"}>Увійти</NavLink>}
-            <div className={"user"}>{userEmail}</div>
+        <div className="header-wrapper">
+            <div className="header">
+                {userState.email && <div className={"user"} onClick={() => setIsOpen(!isOpen)}>{userState.email}</div>}
+            </div>
+            {
+                isOpen && <UserDropdownMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+            }
         </div>
     )
 }

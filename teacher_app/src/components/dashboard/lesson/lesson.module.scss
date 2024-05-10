@@ -1,4 +1,4 @@
-.lesson-container {
+.lesson-wrapper {
   padding: 0 15px 0 25px;
 
   .lesson {
@@ -7,6 +7,13 @@
     border-radius: 5px;
     padding: 15px 5px 10px 15px;
     margin-top: 20px;
+  }
+}
+
+.lesson-container {
+  .lesson__title {
+    font-size: 30px;
+    font-weight: 700;
   }
 }
 

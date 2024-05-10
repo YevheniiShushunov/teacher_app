@@ -1,6 +1,5 @@
-const bodyParser = require('body-parser')
 const {generateAccessToken} = require("./tokenGenerator.services");
-const {createUser, getUserData} = require("../repositories/users.repository");
+const {createUser, getUserData, findUser} = require("../repositories/users.repository");
 
 
 const doRegistration = (email, password) => {
@@ -9,10 +8,10 @@ const doRegistration = (email, password) => {
 
 const getUser = async (email, password) => {
     const response = await getUserData(email, password);
-    if(!response.length) {
+    if(!response) {
         throw new Error('user not found');
     }
-    console.log('service response:', response);
+
     const body = JSON.parse(response);
     const token = generateAccessToken({
         email: body.email,
@@ -26,6 +25,10 @@ const getUser = async (email, password) => {
     const userData = JSON.stringify(data);
 
     return userData;
+}
+
+const getUserByEmail = async (email) => {
+    return findUser(email);
 }
 
 const postAuthData = async (login, password) => {
@@ -43,4 +46,5 @@ module.exports = {
     doRegistration,
     postAuthData,
     getUser,
+    getUserByEmail
 };
