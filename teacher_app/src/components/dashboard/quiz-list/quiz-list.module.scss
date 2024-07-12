@@ -1,0 +1,29 @@
+.quiz__wrapper {
+  padding: 15px 50px;
+}
+
+.quiz__block {
+  margin-top: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.quiz__card {
+  border: none;
+  outline: none;
+  width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 35px 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.quizContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

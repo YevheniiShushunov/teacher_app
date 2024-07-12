@@ -1,0 +1,94 @@
+@import "../../../variables";
+
+.manageQuizWrapper {
+  width: 100%;
+  padding: 15px 250px
+}
+
+.questionTypesSelect {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  width: 220px;
+  height: 40px;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+
+.deleteBtn {
+  border: none;
+  background: $bgdel;
+  border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.quizContainer {
+  border: none;
+  outline: none;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+  background: #FFFFFF;
+  border-radius: 8px;
+  padding: 35px 15px;
+
+  .questionCard {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #d7acac;
+  }
+
+  .questionCard:not(:first-child) {
+    margin-top: 25px;
+  }
+
+  .questionText {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+
+  .answerButtonsCard {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.answersContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.manageQuizForm {
+  margin-top: 25px;
+}
+
+.manageQuizDashboard {
+  display: flex;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+.correctCheck {
+  display: flex;
+  align-items: center;
+}
+
+.answerCard {
+  display: flex;
+  gap: 10px;
+}
+
+.inputTitle {
+  font-size: 25px;
+}
+
+.questionBody {
+  margin-top: 20px;
+}

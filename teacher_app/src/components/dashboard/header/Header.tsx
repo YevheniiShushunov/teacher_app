@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom';
 import {useEffect, useRef, useState} from 'react';
 import {authService} from '../../auth/auth.services';
-import {getToken} from '../../share/Token.service';
+import {getToken} from '../../share/services/Token.service';
 import {useUserManager} from '../../state/store/user-store/user.hook';
 import {TopMenu} from '../../top-menu/TopMenu';
 import {UserDropdownMenu} from './user-dropdown/UserDropdownMenu';

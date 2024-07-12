@@ -18,7 +18,6 @@ export const generateStatus = {
     },
 
     request: () => {
-        console.log('change to request')
         return {...requestStatuses, inProgress: true}
     },
 

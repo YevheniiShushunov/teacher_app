@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getToken} from "../../share/Token.service";
+import {getToken} from "../../share/services/Token.service";
 import {LessonType} from '../../share/interfaces/lesson.type';
 
 const baseURL = "http://localhost:4200";

@@ -1,5 +1,6 @@
 const {generateAccessToken} = require("./tokenGenerator.services");
-const {createUser, getUserData, findUser} = require("../repositories/users.repository");
+// const {createUser, getUserData, findUser} = require("../repositories/users.repository");
+const {createUser,  getUserData, findUser} = require("../repositories/user.pg.rep");
 
 
 const doRegistration = (email, password) => {
@@ -32,7 +33,7 @@ const getUserByEmail = async (email) => {
 }
 
 const postAuthData = async (login, password) => {
-    const response = await signIn(login, password);
+    const response = await getUserData(login, password);
 
     const token = generateAccessToken({
         login: response.login,

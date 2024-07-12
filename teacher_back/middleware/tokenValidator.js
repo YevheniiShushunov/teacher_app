@@ -14,7 +14,6 @@ function tokenCheck(req, res, next) {
 
         try {
             await getUserByEmail(user.email);
-            // console.log('user:', user)
             req.email = user.email;
             req.userId = user.userId;
             next();

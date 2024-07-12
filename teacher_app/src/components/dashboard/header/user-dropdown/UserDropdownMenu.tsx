@@ -1,7 +1,7 @@
 import React from 'react';
 import {useUserManager} from '../../../state/store/user-store/user.hook';
 import {useNavigate} from 'react-router-dom';
-import {removeToken} from '../../../share/Token.service';
+import {removeToken} from '../../../share/services/Token.service';
 import {DropdownProps} from '../../../share/interfaces/menu.type';
 
 export const UserDropdownMenu = ({isOpen, setIsOpen}: DropdownProps) => {

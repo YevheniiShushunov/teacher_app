@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {Button, TextField, Input} from '@mui/material';
 import {useUserManager} from '../../state/store/user-store/user.hook';
 import {ErrorMessage} from '../../validator-message/Error-message';
-import {setToken} from '../../share/Token.service';
+import {setToken} from '../../share/services/Token.service';
 import {authService} from '../auth.services';
 
 export function Login() {
@@ -47,7 +47,6 @@ export function Login() {
                 setToken(response.token);
                 navigate('/')
             }
-            console.log(response);
 
         } catch (e) {
             console.error(e)

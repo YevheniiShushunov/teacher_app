@@ -1,6 +1,5 @@
-import axios, {AxiosResponse} from 'axios';
-import {UserResponse} from '../share/interfaces/user.type';
-import {getToken} from '../share/services/Token.service';
+import axios, { AxiosResponse } from 'axios';
+import { getToken } from "./Token.service";
 
 const baseURL = "http://localhost:4200";
 const authApi = axios.create({
@@ -14,9 +13,9 @@ export const authService = {
         return response.data
     },
 
-    getUserProfile: async (): Promise<UserResponse> => {
+    getUserProfile: async (): Promise<any> => {
         const token = getToken();
-        const response = await authApi.get<UserResponse>('/auth', {
+        const response = await authApi.get<any>('/auth', {
             headers: {
                 'authorization': token
             }
